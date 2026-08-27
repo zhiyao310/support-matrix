@@ -1,10 +1,10 @@
 ---
 sys: revyos
-sys_ver: "20250930"
+sys_ver: "20251226"
 sys_var: null
 
 status: good
-last_update: 2025-10-29
+last_update: 2026-03-17
 ---
 
 # RevyOS LPi4A Test Report
@@ -13,8 +13,8 @@ last_update: 2025-10-29
 
 ### System Information
 
-- System Version: RevyOS 20250930
-- Download Link: [Nginx Directory](https://fast-mirror.isrc.ac.cn/revyos/extra/images/lpi4a/20250930/)
+- System Version: RevyOS 20251226
+- Download Link: [Nginx Directory](https://fast-mirror.isrc.ac.cn/revyos/extra/images/lpi4a/20251226/)
 - Reference Installation Document: [Visit here](https://revyos.github.io/docs/)
 
 ### Hardware Information
@@ -30,11 +30,11 @@ last_update: 2025-10-29
 Download the image, use `zstd` to decompress the image:
 
 ```shell
-wget https://fast-mirror.isrc.ac.cn/revyos/extra/images/lpi4a/20250930/u-boot-with-spl-lpi4a-16g-main.bin
-wget https://fast-mirror.isrc.ac.cn/revyos/extra/images/lpi4a/20250930/boot-lpi4a-20250930_113443.ext4.zst
-wget https://fast-mirror.isrc.ac.cn/revyos/extra/images/lpi4a/20250930/root-lpi4a-20250930_113443.ext4.zst
-zstd -d boot-lpi4a-20250930_113443.ext4.zst
-zstd -d root-lpi4a-20250930_113443.ext4.zst
+wget https://fast-mirror.isrc.ac.cn/revyos/extra/images/lpi4a/20251226/u-boot-with-spl-lpi4a-16g.bin
+wget https://fast-mirror.isrc.ac.cn/revyos/extra/images/lpi4a/20251226/boot-lpi4a-20251225_175338.ext4.zst
+wget https://fast-mirror.isrc.ac.cn/revyos/extra/images/lpi4a/20251226/root-lpi4a-20251225_175338.ext4.zst
+zstd -d boot-lpi4a-20251225_175338.ext4.zst
+zstd -d root-lpi4a-20251225_175338.ext4.zst
 ```
 
 ### Flash to onboard eMMC via `fastboot`
@@ -47,11 +47,11 @@ Use the following commands to flash the image.
 
 ```shell
 sudo fastboot devices
-sudo fastboot flash ram u-boot-with-spl-lpi4a-16g-main.bin
+sudo fastboot flash ram u-boot-with-spl-lpi4a-16g.bin
 sudo fastboot reboot
-sudo fastboot flash uboot u-boot-with-spl-lpi4a-16g-main.bin
-sudo fastboot flash boot boot-lpi4a-20250930_113443.ext4.zst
-sudo fastboot flash root root-lpi4a-20250930_113443.ext4.zst
+sudo fastboot flash uboot u-boot-with-spl-lpi4a-16g.bin
+sudo fastboot flash boot boot-lpi4a-20251225_175338.ext4
+sudo fastboot flash root root-lpi4a-20251225_175338.ext4
 ```
 
 ### Logging into the System
@@ -73,9 +73,9 @@ The system boots up successfully and login via the serial console is successful.
 
 Screen recording (from flashing image to logging into system):
 
-[![asciicast](https://asciinema.org/a/EcUulslHiAdfr6lWrcUh87ItU.svg)](https://asciinema.org/a/EcUulslHiAdfr6lWrcUh87ItU)
+[![asciicast](https://asciinema.org/a/860091.svg)](https://asciinema.org/a/860091)
 
-![A](A.jpg)
+![A](B.png)
 
 ```log
    ____              _ ____  ____  _  __
@@ -86,9 +86,9 @@ Screen recording (from flashing image to logging into system):
                |___/
                    -- Presented by ISCAS
 
-  Debian GNU/Linux trixie/sid (kernel 6.6.108-th1520)
+  Debian GNU/Linux trixie/sid (kernel 6.6.119-th1520)
 
-Linux revyos-lpi4a 6.6.108-th1520 #2025.09.25.17.23+5c28a90d5 SMP Thu Sep 25 17:41:02 UTC 2025 riscv64
+Linux revyos-lpi4a 6.6.119-th1520 #2025.12.24.18.43+2a44b04d6 SMP Wed Dec 24 19:01:45 UTC 2025 riscv64
 
 The programs included with the Debian GNU/Linux system are free software;
 the exact distribution terms for each program are described in the
